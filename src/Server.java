@@ -38,8 +38,8 @@ public class Server {
 			}		
 		
 		} catch (IOException ex) {
-			
-			Iperfer.handleError("IO Error Occurred. Exiting...");
+			System.out.println("IO Error Occurred. Exiting...");
+			System.exit(1);
 		}
 		
 		

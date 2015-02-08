@@ -1,5 +1,3 @@
-package argmageddon;
-
 import java.util.ArrayList;
 
 public class ArgumentSet {
@@ -33,13 +31,14 @@ public class ArgumentSet {
 		this.isValid = true;
 		
 		for(Argument a : arguments) {
-			if(a.isMandatory && !a.isPresent)
+			if(a.isMandatory && !a.isPresent) {
 				this.isValid = false;
+			}
 			
 			if(a.hasValue && a.isPresent && a.value == null)
 				this.isValid = false;
 			
-			if(a.mutex != null && (this.getValue(a.mutex) != null))
+			if(a.mutex != null && (this.getArgument(a.mutex).isPresent))
 				this.isValid = false;
 		}
 		
@@ -59,6 +58,16 @@ public class ArgumentSet {
 		}
 		
 		return false;
+	}
+	
+	public Argument getArgument(String argName) {
+		for(Argument a: arguments) {
+			if(a.name.equals(argName)) {
+				return a;
+			}
+		}
+		
+		return null;
 	}
 	
 	public String getValue(String argName) {

@@ -1,5 +1,3 @@
-package argmageddon;
-
 public class Argument {
 	public boolean isMandatory, hasValue, isPresent;
 	public String name, mutex, value, description;
