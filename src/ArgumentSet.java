@@ -38,7 +38,7 @@ public class ArgumentSet {
 			if(a.hasValue && a.isPresent && a.value == null)
 				this.isValid = false;
 			
-			if(a.mutex != null && (this.getArgument(a.mutex).isPresent))
+			if(a.isPresent && a.mutex != null && (this.getArgument(a.mutex).isPresent))
 				this.isValid = false;
 		}
 		

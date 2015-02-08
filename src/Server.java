@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.*;
 
-
 public class Server {
 	
 	public final int PACKET_LENGTH = 1000;

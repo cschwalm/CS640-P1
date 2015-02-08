@@ -25,6 +25,11 @@ public class Iperfer {
 		}
 		
 		if(arguments.getArgument("c").isPresent) {		   	// In Client Mode
+			if(!arguments.getArgument("h").isPresent || !arguments.getArgument("t").isPresent) {
+				System.out.println("Error: missing or additional arguments");
+				System.exit(1);
+			}
+			
 			String hostname = arguments.getValue("h");
 			int time = new Integer(arguments.getValue("t"));
 			
