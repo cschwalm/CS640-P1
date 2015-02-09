@@ -25,12 +25,13 @@ public class Client {
 			long startTime = System.currentTimeMillis();
 			long endTime;
 			
-			while((endTime = System.currentTimeMillis()) < (startTime + this.time * 1000)) {
+			while(System.currentTimeMillis() < (startTime + this.time * 1000)) {
 				outStream.write(buffer);
 				bytesWritten++;
 			}
 			
 			outStream.close();
+			endTime = System.currentTimeMillis();
 			socket.close();
 			
 			double speed = (bytesWritten * 8.0 / (endTime - startTime));
