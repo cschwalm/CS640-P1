@@ -1,3 +1,17 @@
+/**
+ * This application can be run in two modes:
+ * 
+ * Server mode is single threaded and listens for a single request from a client.
+ * Client mode connects to a server, sends a specified amount of data, then ends.
+ * 
+ * View the CLI arguments for more information.
+ * 
+ * Project: CS640-P1
+ * 
+ * @author Corbin Schwalm <schwalm@wisc.edu>
+ * @author Carter Peterson
+ *
+ */
 public class Iperfer {
 
 	public static void main(String[] args) {
@@ -24,7 +38,8 @@ public class Iperfer {
 			System.exit(1);
 		}
 		
-		if(arguments.getArgument("c").isPresent) {		   	// In Client Mode
+		if(arguments.getArgument("c").isPresent) { // In Client Mode
+			
 			if(!arguments.getArgument("h").isPresent || !arguments.getArgument("t").isPresent) {
 				System.out.println("Error: missing or additional arguments");
 				System.exit(1);
@@ -35,13 +50,15 @@ public class Iperfer {
 			
 			Client client = new Client(hostname, port, time);
 			client.run();
-		} else if (arguments.getArgument("s").isPresent) { 	// In Server Mode
 			
-		} else {											// No mode
+		} else if (arguments.getArgument("s").isPresent) { // In Server Mode
+			
+			Server server = new Server(port);
+			server.processClientData();
+			
+		} else { // No mode
 			System.out.println("Error: missing or additional arguments");
 			System.exit(1);
 		}
-		
 	}
-
 }

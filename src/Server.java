@@ -5,15 +5,23 @@ public class Server {
 	
 	public final int PACKET_LENGTH = 1000;
 	
-	public void processClientData(int portNum) {
+	private int portNum;
+	
+	public Server(int portNum) {
 		
 		if (portNum < 1024 || portNum > 65535)
 			throw new IllegalArgumentException("Invalid Port Number");
 		
+		this.portNum = portNum;
+	}
+	
+	public void processClientData() {
+			
 		Socket client;
-		int bytesRead = 0, bytesReadTotal = 0;
+		int bytesRead = 0, bytesReadTotal = 0, time = 0;
+		double rate = 0.0;
 		byte[] dataReceived = new byte[PACKET_LENGTH];
-		long timeStart, timeEnd;
+		long timeStart = 0, timeEnd = 0;
 		
 		try {
 		
@@ -41,9 +49,12 @@ public class Server {
 			System.exit(1);
 		}
 		
+		System.out.println((timeEnd - timeStart));
+				
+		time = (int) ((timeEnd - timeStart));
+		System.out.println(time);
+		rate = (bytesReadTotal / 1000000) / (double) time;
 		
-		
-		
+		System.out.println("received=" + (bytesReadTotal / 1000) + " KB rate=" + rate + " Mbps");
 	}
-
 }

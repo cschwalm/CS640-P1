@@ -25,7 +25,7 @@ public class Client {
 			long startTime = System.currentTimeMillis();
 			long endTime;
 			
-			while((endTime = System.currentTimeMillis()) < (startTime + this.time)) {
+			while((endTime = System.currentTimeMillis()) < (startTime + this.time * 1000)) {
 				outStream.write(buffer);
 				bytesWritten++;
 			}
