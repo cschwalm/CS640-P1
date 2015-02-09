@@ -19,7 +19,7 @@ public class Server {
 			
 		Socket client;
 		int bytesRead = 0, bytesReadTotal = 0, time = 0;
-		double rate = 0.0;
+		double rate = 0.0, rateBits = 0.0;
 		byte[] dataReceived = new byte[PACKET_LENGTH];
 		long timeStart = 0, timeEnd = 0;
 		
@@ -35,7 +35,9 @@ public class Server {
 				while (bytesRead != -1) {
 				
 					bytesRead = data.read(dataReceived, 0, PACKET_LENGTH);
-					bytesReadTotal += bytesRead;
+					
+					if (bytesRead != -1)
+						bytesReadTotal += bytesRead;
 				}
 				
 				timeEnd = System.currentTimeMillis();
@@ -48,13 +50,11 @@ public class Server {
 			System.out.println("IO Error Occurred. Exiting...");
 			System.exit(1);
 		}
-		
-		System.out.println((timeEnd - timeStart));
 				
-		time = (int) ((timeEnd - timeStart));
-		System.out.println(time);
+		time = (int) ((timeEnd - timeStart) / 1000);
 		rate = (bytesReadTotal / 1000000) / (double) time;
+		rateBits = rate * 8;
 		
-		System.out.println("received=" + (bytesReadTotal / 1000) + " KB rate=" + rate + " Mbps");
+		System.out.println("received=" + (bytesReadTotal / 1000) + " KB rate=" + rateBits + " Mbps");
 	}
 }
