@@ -1,0 +1,5 @@
+server:
+received=65502 KB rate=22.608695652173914 Mbps
+
+client:
+sent=65502 KB rate=25.016279180789613 Mbps

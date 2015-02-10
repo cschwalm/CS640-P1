@@ -1,0 +1,75 @@
+Q2:
+
+Estimations:
+Latency between h1 & h4 would be sum of latency of 
+links between them. (160.3 ms)
+
+Throughput of link would be the floor of speed of intermediate
+links. (19.47 mbps)
+
+Measured Numbers:
+Latency: Average 160.801ms
+Throughput: Measured 19 mbps
+
+Our predicitions as to what would contribute to the latency of 
+throughput of the path from h1 to h4 was seemed to be correct. While
+our numbers differ slightly it appears that the overall RTT was the
+sum of the link latencies and the throughput was the floor of the 
+throughputs of the links.
+
+
+Q3:
+
+Predictions:
+
+We predict that with two or three pairs comminicating from s1 to s3 the
+latency will remain close to the same (no significant difference), while
+the throughput will be halved or thirded respectively.
+
+Two Pairs:
+Latency: ~160 ms
+Throughput: 9.5 mbps
+
+Three Pairs:
+Latency: ~160 ms
+Throughput: 6.33 mbps
+
+Measurements:
+2 hosts:
+latency: 160.6 ms
+throughput: 11.5 Mbps & 7 Mbps (with the first program to start executing getting higher throughput)
+
+3 hosts:
+latency: 160.8 ms
+throughput: 3.66 Mbps, 6.66 Mbps, 9.33 Mbps
+
+Our predictions for latency and throughput for the most part were correct. Latency was maintained like
+we predicted as individual packets should maintain their round trip time when the network is uncongested.
+When the network is being saturated the bandwidth was split as we assumed it would be, but it was not split
+evenly like we thought it would. The order in which you started the connections seemed to make a difference
+in what throughput was achieved for that connection, with the earlier established links performing better.
+
+Q4:
+
+Predictions:
+
+Latency: We predict that the latency will remain the same for both links.
+	 For h1-h4 latency will be ~160 ms.
+	 For h5-h6 latency will be ~41.1ms.
+
+Throughput:  We predict that throughput will be the floor of the throughputs of the links.
+	     If half of L2 is the lowest the throughput will be bottlenecked by that link.
+	     L2 devided in half should be the bottleneck with each pair getting ~20Mbps
+
+
+Measurements:
+	
+Latency:
+	Latency preformed exactly how we predicted with h1-h4 at 160.8 ms and h5-h6 at
+	40.7. These numbers are roughly the sum of the latency of the intermediate links.
+
+Throughput:
+	Throughput preformed like we predicted with the throughput of the L2 link being
+	divided between the two connections, with one connection getting 25Mbps and the
+	other link getting 16Mbps. This is consistent with out finding on the previous
+	question where the throughput was divided but not evenly.
